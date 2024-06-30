@@ -8,10 +8,10 @@ export const actions = {
 		const tags = formData.tags.split(' ');
 		const file = formData.fileToUpload;
 
-		writeFileSync(`static/${file.name}`, Buffer.from(await file.arrayBuffer()));
+		//writeFileSync(`static/${file.name}`, Buffer.from(await file.arrayBuffer()));
 		var today = new Date();
 
-		//await sql`INSERT INTO events (image_name, date) VALUES ('${file.name}', '${today}');`;
+		await sql`INSERT INTO events (image_name, date) VALUES ('${file.name}', '${today}');`;
 
 		return {
 			success: true
