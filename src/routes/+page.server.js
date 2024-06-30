@@ -1,26 +1,32 @@
-import { writeFileSync } from 'fs';
+import { error } from '@sveltejs/kit';
 import { sql } from '@vercel/postgres';
+import { put } from '@vercel/blob';
+import { BLOB_READ_WRITE_TOKEN } from '$env/static/private';
 
 export const actions = {
-	default: async ({ request }) => {
-		const formData = Object.fromEntries(await request.formData());
+	upload: async ({ request }) => {
+		const form = Object.fromEntries(await request.formData());
+		const file = form.fileToUpload;
 
-		const tags = formData.tags.split(' ');
-		const file = formData.fileToUpload;
+		console.log(file);
 
-		writeFileSync(`static/${file.name}`, Buffer.from(await file.arrayBuffer()));
+		if (!file) {
+			error(400, { message: 'No file to upload.' });
+		}
+
+		const { url } = await put(file.name, file, {
+			access: 'public',
+			token: BLOB_READ_WRITE_TOKEN
+		});
 		var today = new Date();
 
-		await sql`INSERT INTO events (image_name, date) VALUES (${file.name}, ${today.toISOString()});`;
-
-		return {
-			success: true
-		};
+		await sql`INSERT INTO events (image_name, date) VALUES (${url}, ${today.toISOString()});`;
+		return { uploaded: url };
 	}
 };
+
 export async function load({ locals }) {
 	let events = await sql`SELECT * from EVENTS`;
-	console.log(events);
 	return {
 		events
 	};
