@@ -16,6 +16,10 @@
 	color: var(--color-text);
 }
 
+.thumbnail {
+	width: 4rem;
+}
+
 body {
 	min-height: 100vh;
 	margin: 0;

@@ -7,9 +7,8 @@ export const actions = {
 
 		const tags = formData.tags.split(' ');
 		const file = formData.fileToUpload;
-		console.log('HEJHEJ');
 
-		//writeFileSync(`static/${file.name}`, Buffer.from(await file.arrayBuffer()));
+		writeFileSync(`static/${file.name}`, Buffer.from(await file.arrayBuffer()));
 		var today = new Date();
 
 		await sql`INSERT INTO events (image_name, date) VALUES (${file.name}, ${today.toISOString()});`;
@@ -21,6 +20,7 @@ export const actions = {
 };
 export async function load({ locals }) {
 	let events = await sql`SELECT * from EVENTS`;
+	console.log(events);
 	return {
 		events
 	};
