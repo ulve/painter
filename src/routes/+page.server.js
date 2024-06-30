@@ -9,6 +9,9 @@ export const actions = {
 		const file = formData.fileToUpload;
 
 		writeFileSync(`static/${file.name}`, Buffer.from(await file.arrayBuffer()));
+		var today = new Date();
+
+		//await sql`INSERT INTO events (image_name, date) VALUES ('${file.name}', '${today}');`;
 
 		return {
 			success: true
@@ -16,8 +19,9 @@ export const actions = {
 	}
 };
 export async function load({ locals }) {
-	console.log('hejhej');
+	let events = await sql`SELECT * from EVENTS`;
+	console.log(events);
 	return {
-		cart: await sql`SELECT * from IMAGES`
+		events
 	};
 }

@@ -3,10 +3,11 @@
 </script>
 
 <div>
-	{#each data.cart as { id, timestamp } (id)}
+	{#each data.events.rows as { id, timestamp } (id)}
 		<div>{id} - {timestamp}</div>
 	{/each}
 </div>
+
 <form method="post" enctype="multipart/form-data">
 	<div class="group">
 		<label for="file">Upload your file</label>
