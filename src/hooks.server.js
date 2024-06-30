@@ -1,4 +1,4 @@
-import { error } from '@sveltejs/kit';
+/*import { error } from '@sveltejs/kit';
 const allowedOrigins = ['http://localhost:3000'];
 
 const csrf = (event, allowedOrigins) => {
@@ -35,4 +35,4 @@ function isFormContentType(request) {
 export const handle = async ({ event, resolve }) => {
 	csrf(event, allowedOrigins);
 	return await resolve(event);
-};
+};*/
