@@ -12,7 +12,7 @@ export const actions = {
 		//writeFileSync(`static/${file.name}`, Buffer.from(await file.arrayBuffer()));
 		var today = new Date();
 
-		await sql`INSERT INTO events (image_name, date) VALUES ('${file.name}', '${today}');`;
+		await sql`INSERT INTO events (image_name, date) VALUES (${file.name}, ${today.toISOString()});`;
 
 		return {
 			success: true
@@ -21,7 +21,6 @@ export const actions = {
 };
 export async function load({ locals }) {
 	let events = await sql`SELECT * from EVENTS`;
-	console.log(events);
 	return {
 		events
 	};
