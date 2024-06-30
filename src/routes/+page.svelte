@@ -3,8 +3,8 @@
 </script>
 
 <div>
-	{#each data.cart as { id, quantity } (id)}
-		<div>{id} - {quantity}</div>
+	{#each data.cart as { id, timestamp } (id)}
+		<div>{id} - {timestamp}</div>
 	{/each}
 </div>
 <form method="post" enctype="multipart/form-data">
@@ -17,4 +17,3 @@
 	<input type="text" name="tags" />
 	<button type="submit">Submit</button>
 </form>
-
