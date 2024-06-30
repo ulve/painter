@@ -1,5 +1,5 @@
-import { fail } from '@sveltejs/kit';
 import { writeFileSync } from 'fs';
+import { sql } from '@vercel/postgres';
 
 export const actions = {
 	default: async ({ request }) => {
@@ -15,3 +15,9 @@ export const actions = {
 		};
 	}
 };
+export async function load({ locals }) {
+	console.log('hejhej');
+	return {
+		cart: await sql`SELECT * from IMAGES`
+	};
+}

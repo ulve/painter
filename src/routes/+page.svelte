@@ -1,3 +1,12 @@
+<script lang="ts">
+	export let data;
+</script>
+
+<div>
+	{#each data.cart as { id, quantity } (id)}
+		<div>{id} - {quantity}</div>
+	{/each}
+</div>
 <form method="post" enctype="multipart/form-data">
 	<div class="group">
 		<label for="file">Upload your file</label>
