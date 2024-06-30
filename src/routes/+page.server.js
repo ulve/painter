@@ -7,6 +7,7 @@ export const actions = {
 
 		const tags = formData.tags.split(' ');
 		const file = formData.fileToUpload;
+		console.log('HEJHEJ');
 
 		//writeFileSync(`static/${file.name}`, Buffer.from(await file.arrayBuffer()));
 		var today = new Date();
