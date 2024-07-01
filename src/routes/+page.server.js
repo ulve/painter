@@ -4,14 +4,17 @@ import { put } from '@vercel/blob';
 import { BLOB_READ_WRITE_TOKEN } from '$env/static/private';
 
 export const actions = {
-	upload: async ({ request }) => {
+	upload: async ({ request, locals }) => {
 		const form = Object.fromEntries(await request.formData());
 		const file = form.fileToUpload;
-
-		console.log(file);
+		const { username } = locals;
 
 		if (!file) {
 			error(400, { message: 'No file to upload.' });
+		}
+
+		if (username !== 'olov') {
+			error(403, { message: 'You are not choosen' });
 		}
 
 		const { url } = await put(file.name, file, {

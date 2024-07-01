@@ -36,3 +36,20 @@ export const handle = async ({ event, resolve }) => {
 	csrf(event, allowedOrigins);
 	return await resolve(event);
 };*/
+import { getSession } from '$lib/server/sessionStore';
+export const handle = async ({ event, resolve }) => {
+	const { cookies } = event;
+	const sid = cookies.get('sid', { path: '/' });
+	if (sid) {
+		const session = await getSession(sid);
+		if (session) {
+			event.locals.username = session.username;
+		} else {
+			// remove invalid/expired/unknown cookie
+			cookies.delete('sid', { path: '/' });
+		}
+	}
+
+	const response = await resolve(event);
+	return response;
+};
