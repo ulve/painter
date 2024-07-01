@@ -46,7 +46,13 @@
 			</h2>
 			<div class="flex flex-row flex-wrap h-full pt-8 bg-white">
 				{#each groups[group] as { image_name }}
-					<a href={image_name}><img class="w-32 m-2" src={image_name} alt="fififi" /></a>
+					<a href={'https://ik.imagekit.io/painter/' + image_name}
+						><img
+							class="w-32 m-2"
+							src={'https://ik.imagekit.io/painter/tr:w-128/' + image_name}
+							alt="fififi"
+						/></a
+					>
 				{/each}
 			</div>
 		</div>
