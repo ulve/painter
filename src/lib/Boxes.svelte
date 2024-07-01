@@ -20,10 +20,15 @@
 <div class="flex flex-row flex-wrap">
 	{#each arr as a}
 		<div
-			class="m-0.5 w-4 h-4 border-solid border-2"
+			class="m-0.5 w-4 h-4 border border-black black_border"
 			class:bg-lime-600={a}
-			class:border-lime-500={a}
-			class:border-orange-600={!a}
+			class:bg-orange-600={!a}
 		></div>
 	{/each}
 </div>
+
+<style>
+	.black_border {
+		box-shadow: 4px 4px 1px rgb(0, 0, 0);
+	}
+</style>
