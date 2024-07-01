@@ -28,9 +28,9 @@ export const actions = {
 	}
 };
 
-export async function load({ locals }) {
+export async function load() {
 	let events = await sql`SELECT * from EVENTS`;
 	return {
-		events
+		events: events.rows
 	};
 }

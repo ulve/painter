@@ -16,7 +16,7 @@
 		}, {});
 	}
 
-	$: groups = group(data.events.rows);
+	$: groups = group(data.events.sort().reverse());
 </script>
 
 <div class="flex flex-col">
