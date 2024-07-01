@@ -38,13 +38,13 @@
 
 <div class="flex ps-4 mt-16 flex-row flex-wrap gap-12">
 	{#each f as group (group)}
-		<div class="relative border border-black purple_border bg-slate-50">
+		<div class="relative border border-black purple_border">
 			<h2
 				class="absolute py-1 px-3 -left-4 -top-4 -rotate-[10deg] border border-black black_border bg-[#7e22ce] text-white font-bold"
 			>
 				{group}
 			</h2>
-			<div class="flex flex-row flex-wrap h-full pt-8 bg-slate-100">
+			<div class="flex flex-row flex-wrap h-full pt-8 bg-white">
 				{#each groups[group] as { image_name }}
 					<a href={image_name}><img class="w-32 m-2" src={image_name} alt="fififi" /></a>
 				{/each}
