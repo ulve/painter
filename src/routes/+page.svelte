@@ -2,7 +2,7 @@
 	export let data;
 
 	import Modal from '../lib/Modal.svelte';
-
+	import Boxes from '../lib/Boxes.svelte';
 	let showModal = false;
 
 	function group(arr) {
@@ -19,6 +19,7 @@
 	$: groups = group(data.events.sort().reverse());
 </script>
 
+<Boxes bind:groups />
 <div class="flex flex-col">
 	{#each Object.keys(groups) as group}
 		<div class="container">
