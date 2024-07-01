@@ -44,7 +44,7 @@
 			>
 				{group}
 			</h2>
-			<div class="flex flex-row flex-wrap pt-8 bg-white">
+			<div class="flex flex-row flex-wrap pt-8 bg-white h-full">
 				{#each groups[group] as { image_name }}
 					<a href={'https://ik.imagekit.io/painter/' + image_name}
 						><img
