@@ -16,14 +16,14 @@ export const actions = {
 		if (username !== 'olov') {
 			error(403, { message: 'You are not choosen' });
 		}
+		console.log(form.date);
 
 		const { url } = await put(file.name, file, {
 			access: 'public',
 			token: BLOB_READ_WRITE_TOKEN
 		});
-		var today = new Date();
 
-		await sql`INSERT INTO events (image_name, date) VALUES (${url}, ${today.toISOString()});`;
+		await sql`INSERT INTO events (image_name, date) VALUES (${url}, ${form.date});`;
 		return { uploaded: url };
 	}
 };

@@ -1,3 +1,15 @@
+# tables
+
+```sql
+CREATE TABLE events (
+    id SERIAL PRIMARY KEY,
+    timestamp TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    image_name VARCHAR(255) NOT NULL,
+    date TIMESTAMP WITH TIME ZONE,
+    tags TEXT[]
+);
+```
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).

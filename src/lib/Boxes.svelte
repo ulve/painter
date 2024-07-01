@@ -17,13 +17,12 @@
 	arr = arr.reverse();
 </script>
 
-<div class="flex flex-row">
+<div class="flex flex-row flex-wrap">
 	{#each arr as a}
 		<div
-			class="w-4 h-4"
+			class="m-0.5 w-4 h-4 border-solid border-2"
 			class:bg-lime-600={a}
-			class:border-solid={!a}
-			class:border-2={!a}
+			class:border-lime-500={a}
 			class:border-orange-600={!a}
 		></div>
 	{/each}
