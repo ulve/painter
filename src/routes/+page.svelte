@@ -16,7 +16,8 @@
 		}, {});
 	}
 
-	$: groups = group(data.events.sort().reverse());
+	$: groups = group(data.events);
+	let f = Object.keys(group(data.events)).sort().reverse();
 </script>
 
 <div class="flex mb-8">
@@ -36,7 +37,7 @@
 <Boxes bind:groups />
 
 <div class="flex ps-4 mt-16 flex-row flex-wrap gap-12">
-	{#each Object.keys(groups) as group}
+	{#each f as group (group)}
 		<div class="relative border border-black purple_border bg-slate-50">
 			<h2
 				class="absolute py-1 px-3 -left-4 -top-4 -rotate-[10deg] border border-black black_border bg-[#7e22ce] text-white font-bold"
